@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RNAppleHealthKit'
-  s.version          = '0.6.5'
+  s.version          = '0.7.1'
   s.summary          = 'A React Native package for interacting with Apple HealthKit'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ A React Native package for interacting with Apple HealthKit
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Terrillo Walls' => '' }
-  s.source           = { :git => 'https://github.com/terrillo/rn-apple-healthkit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/awsmlabs/rn-apple-healthkit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
