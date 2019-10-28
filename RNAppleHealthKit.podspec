@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RNAppleHealthKit'
-  s.version          = '0.8.1'
+  s.version          = '0.8.2'
   s.summary          = 'A React Native package for interacting with Apple HealthKit'
 
 # This description is used to generate tags and improve search results.

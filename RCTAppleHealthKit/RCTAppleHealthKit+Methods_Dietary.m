@@ -540,6 +540,8 @@
     
     [self fetchCumulativeSumStatisticsCollection:quantityType
                                             unit:unit
+                                       startDate:startDate
+                                         endDate:endDate
                                        ascending:false
                                            limit:HKObjectQueryNoLimit
                                       completion:^(NSArray *results, NSError *error) {
