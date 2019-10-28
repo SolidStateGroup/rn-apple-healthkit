@@ -81,6 +81,9 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 ```
 
 ## Changelog
+0.8.4v
+- Allowing perms for all Nutrition Samples
+
 0.8.3v
 - Forcing DietaryEnergy to HKUnit of kiloCalorie
 
