@@ -81,6 +81,9 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 ```
 
 ## Changelog
+0.8.3v
+- Forcing DietaryEnergy to HKUnit of kiloCalorie
+
 0.8.2v
 - Enabled fetching of Dietary Energy and Nutrition Samples.
 
