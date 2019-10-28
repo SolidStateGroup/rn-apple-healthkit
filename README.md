@@ -1,6 +1,10 @@
 
 # React Native Apple Healthkit
-A React Native bridge module for interacting with Apple Healthkit data. Checkout the [full documentation](https://github.com/terrillo/rn-apple-healthkit/tree/master/docs)
+A React Native bridge module for interacting with Apple Healthkit data. Checkout the [full documentation](https://github.com/awsmlabs/rn-apple-healthkit/tree/master/docs)
+
+## NOTE:
+
+Forked from https://github.com/terrillo/rn-apple-healthkit) as it was outdated.
 
 ## Installation
 
