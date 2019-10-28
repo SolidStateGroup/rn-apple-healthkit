@@ -77,6 +77,12 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 ```
 
 ## Changelog
+0.8.0v
+- Enabled fetching of Dietary Energy and Nutrition Samples.
+
+0.7.1v
+- Enabled fetching basal energy & active energy as a daily summary.
+
 0.6.5v
 - Enable fetching basal energy [#23](https://github.com/terrillo/rn-apple-healthkit/pull/23)
 - remove checkPermission functions in order to use from PR [#69](https://github.com/terrillo/rn-apple-healthkit/pull/69)
@@ -112,10 +118,13 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
       * [setObserver](/docs/setObserver().md)
     * Read Methods
       * [getActiveEnergyBurned](/docs/getActiveEnergyBurned().md)
+      * [getActiveEnergyDailySamples](/docs/getActiveEnergyDailySamples().md)
       * [getBasalEnergyBurned](/docs/getBasalEnergyBurned().md)
+      * [getBasalEnergyDailySamples](/docs/getBasalEnergyDailySamples().md)
       * [getBiologicalSex](/docs/getBiologicalSex().md)
       * [getBloodGlucoseSamples](/docs/getBloodglucoseSamples().md)
       * [getBloodPressureSamples](/docs/getBloodPressureSamples().md)
+      * [getBodyFatPercentageSamples](/docs/getBodyFatPercentageSamples().md)
       * [getBodyTemperatureSamples](/docs/getBodyTemperatureSamples().md)
       * [getDailyDistanceCyclingSamples](/docs/getDailyDistanceCyclingSamples().md)
       * [getDailyDistanceWalkingRunningSamples](/docs/getDailyDistanceWalkingRunningSamples().md)
@@ -130,16 +139,16 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
       * [getHeightSamples](/docs/getHeightSamples().md)
       * [getLatestBmi](/docs/getLatestBmi().md)
       * [getLatestBodyFatPercentage](/docs/getLatestBodyFatPercentage().md)
-      * [getBodyFatPercentageSamples](/docs/getBodyFatPercentageSamples().md)
       * [getLatestHeight](/docs/getLatestHeight().md)
       * [getLatestLeanBodyMass](/docs/getLatestLeanBodyMass().md)
-      * [getLeanBodyMassSamples](/docs/getLeanBodyMassSamples().md)
       * [getLatestWeight](/docs/getLatestWeight().md)
+      * [getLeanBodyMassSamples](/docs/getLeanBodyMassSamples().md)
+      * [getNutritionDailySamples](/docs/getNutritionDailySamples().md)
       * [getRespiratoryRateSamples](/docs/getRespiratoryRateSamples().md)
       * [getSleepSamples](/docs/getSleepSamples().md)
       * [getStepCount](/docs/getStepCount().md)
-      * [getWeightSamples](/docs/getWeightSamples().md)
       * [getSamples](docs/getSamples().md)
+      * [getWeightSamples](/docs/getWeightSamples().md)
     * Write Methods
       * [saveBmi](/docs/saveBmi().md)
       * [saveHeight](/docs/saveHeight().md)
