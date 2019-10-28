@@ -81,7 +81,7 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 ```
 
 ## Changelog
-0.8.0v
+0.8.1v
 - Enabled fetching of Dietary Energy and Nutrition Samples.
 
 0.7.1v
