@@ -81,6 +81,10 @@ AppleHealthKit.initHealthKit(options: Object, (err: string, results: Object) => 
 ```
 
 ## Changelog
+
+0.9.0v
+- Adding Waist Circumference
+
 0.8.4v
 - Allowing perms for all Nutrition Samples
 

@@ -79,9 +79,19 @@ RCT_EXPORT_METHOD(getHeightSamples:(NSDictionary *)input callback:(RCTResponseSe
     [self body_getHeightSamples:input callback:callback];
 }
 
+RCT_EXPORT_METHOD(getLatestWaistCircumference:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self body_getLatestWaistCircumference:input callback:callback];
+}
+
 RCT_EXPORT_METHOD(saveHeight:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
 {
     [self body_saveHeight:input callback:callback];
+}
+
+RCT_EXPORT_METHOD(saveWaistCircumference:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self body_saveWaistCircumference:input callback:callback];
 }
 
 RCT_EXPORT_METHOD(getLatestBmi:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)

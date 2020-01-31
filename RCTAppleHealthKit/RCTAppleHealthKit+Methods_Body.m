@@ -139,6 +139,52 @@
     }];
 }
 
+- (void)body_getLatestWaistCircumference:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+{
+    HKQuantityType *waistType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierWaistCircumference];
+    HKUnit *unit = [RCTAppleHealthKit hkUnitFromOptions:input key:@"unit" withDefault:[HKUnit inchUnit]];
+
+    [self fetchMostRecentQuantitySampleOfType:waistType
+                                    predicate:nil
+                                   completion:^(HKQuantity *mostRecentQuantity, NSDate *startDate, NSDate *endDate, NSError *error) {
+        if (!mostRecentQuantity) {
+            callback(@[RCTJSErrorFromNSError(error)]);
+        }
+        else {
+            // Determine the userWaist in the required unit.
+            double userWaist = [mostRecentQuantity doubleValueForUnit:unit];
+
+            NSDictionary *response = @{
+                    @"value" : @(userWaist),
+                    @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
+                    @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
+            };
+
+            callback(@[[NSNull null], response]);
+        }
+    }];
+}
+
+
+- (void)body_saveWaistCircumference:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+{
+    double userWaist = [RCTAppleHealthKit doubleValueFromOptions:input];
+    NSDate *sampleDate = [RCTAppleHealthKit dateFromOptionsDefaultNow:input];
+    HKUnit *unit = [RCTAppleHealthKit hkUnitFromOptions:input key:@"unit" withDefault:[HKUnit inchUnit]];
+
+    HKQuantity *userWaistQuantity = [HKQuantity quantityWithUnit:unit doubleValue:userWaist];
+    HKQuantityType *userWaistType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierWaistCircumference];
+    HKQuantitySample *userWaistSample = [HKQuantitySample quantitySampleWithType:userWaistType quantity:userWaistQuantity startDate:sampleDate endDate:sampleDate];
+
+    [self.healthStore saveObject:userWaistSample withCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            callback(@[RCTJSErrorFromNSError(error)]);
+            return;
+        }
+        callback(@[[NSNull null], @(userWaist)]);
+    }];
+}
+
 
 - (void)body_getLatestHeight:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
