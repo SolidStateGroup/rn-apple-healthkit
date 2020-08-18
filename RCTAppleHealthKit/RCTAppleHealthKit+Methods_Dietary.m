@@ -539,22 +539,39 @@
         quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryWater];
     }
     
-    [self fetchCumulativeSumStatisticsCollection:quantityType
-                                            unit:unit
-                                       startDate:startDate
-                                         endDate:endDate
-                                       ascending:false
-                                           limit:HKObjectQueryNoLimit
-                                      completion:^(NSArray *results, NSError *error) {
-                                          if(results){
-                                              callback(@[[NSNull null], results]);
-                                              return;
-                                          } else {
-                                              NSLog(@"error getting %@ intake daily samples: %@", type, error);
-                                              callback(@[RCTMakeError(@"error getting %@ intake daily samples", type, nil)]);
-                                              return;
-                                          }
-                                      }];
+    // LF: This doesn't work
+    // [self fetchCumulativeSumStatisticsCollection:quantityType
+    //                                         unit:unit
+    //                                    startDate:startDate
+    //                                      endDate:endDate
+    //                                    ascending:false
+    //                                        limit:HKObjectQueryNoLimit
+    //                                   completion:^(NSArray *results, NSError *error) {
+    //                                       if(results){
+    //                                           callback(@[[NSNull null], results]);
+    //                                           return;
+    //                                       } else {
+    //                                           NSLog(@"error getting %@ intake daily samples: %@", type, error);
+    //                                           callback(@[RCTMakeError(@"error getting %@ intake daily samples", type, nil)]);
+    //                                           return;
+    //                                       }
+    //                                   }];
+
+    // LF: use the fetch for samples per day. Seems to work OK
+    [self fetchSumOfSamplesOnDayForType:quantityType unit:unit day:startDate completion:^(double count, NSDate *startDate, NSDate *endDate, NSError *error) {
+        if (!count) {
+            callback(@[RCTJSErrorFromNSError(error)]);
+            return;
+        }
+
+        NSDictionary *response = @{
+                @"value" : @(count),
+                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
+                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
+        };
+
+        callback(@[[NSNull null], response]);
+    }];
     
 }
 
