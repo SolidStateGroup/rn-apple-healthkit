@@ -74,6 +74,42 @@
                                      }];
 }
 
+- (void)activity_getAppleExerciseTimeOnDay:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+{
+    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
+    HKUnit *mins = [HKUnit minuteUnit];
+
+    if (@available(iOS 9.3, *)) {
+        HKQuantityType *appleExerciseTimeType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierAppleExerciseTime];
+        
+        
+        [self fetchSumOfSamplesOnDayForType:appleExerciseTimeType unit:mins day:startDate completion:^(double count, NSDate *startDate, NSDate *endDate, NSError *error) {
+            if (!count) {
+                callback(@[RCTJSErrorFromNSError(error)]);
+                return;
+            }
+            
+            NSDictionary *response = @{
+                @"value" : @(count),
+                @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
+                @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:endDate],
+            };
+            
+            callback(@[[NSNull null], response]);
+        }];
+    } else {
+        // Fallback on earlier versions
+        NSDictionary *response = @{
+            @"value" : @0,
+            @"startDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
+            @"endDate" : [RCTAppleHealthKit buildISO8601StringFromDate:startDate],
+        };
+        
+        callback(@[[NSNull null], response]);
+    }
+    
+}
+
 - (void)activity_getBasalEnergyBurned:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
     HKQuantityType *basalEnergyType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBasalEnergyBurned];

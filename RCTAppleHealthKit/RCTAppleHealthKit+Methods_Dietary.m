@@ -537,6 +537,7 @@
     }
     if ([type isEqual:@"Water"]) {
         quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryWater];
+        unit = [HKUnit literUnit];
     }
     
     // LF: This doesn't work

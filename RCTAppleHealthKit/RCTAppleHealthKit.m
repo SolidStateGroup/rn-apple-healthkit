@@ -225,6 +225,11 @@ RCT_EXPORT_METHOD(getActiveEnergyDailySamples:(NSDictionary *)input callback:(RC
    [self activity_getActiveEnergyDailySamples:input callback:callback];
 }
 
+RCT_EXPORT_METHOD(getAppleExerciseTime:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self activity_getAppleExerciseTimeOnDay:input callback:callback];
+}
+
 RCT_EXPORT_METHOD(getBasalEnergyBurned:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
 {
     [self activity_getBasalEnergyBurned:input callback:callback];
